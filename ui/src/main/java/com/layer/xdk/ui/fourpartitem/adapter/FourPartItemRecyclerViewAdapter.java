@@ -1,5 +1,7 @@
 package com.layer.xdk.ui.fourpartitem.adapter;
 
+import android.graphics.Color;
+import android.view.View;
 import androidx.paging.PagedListAdapter;
 import android.content.Context;
 import androidx.databinding.OnRebindCallback;
@@ -39,6 +41,10 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
 
     private OnRebindCallback<BINDING> mOnRebindCallback;
 
+    private TwoPartOnItemClickListener mTwoPartOnClick;
+    private ITEM mSelectedItem;
+    private View mSelectedView;
+
     protected FourPartItemRecyclerViewAdapter(LayerClient layerClient,
             @NonNull DiffUtil.ItemCallback<ITEM> diffCallback) {
         super(diffCallback);
@@ -58,6 +64,7 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
                 }
             }
         };
+        mTwoPartOnClick = new TwoPartOnItemClickListener();
     }
 
     @SuppressWarnings("WeakerAccess")
@@ -97,7 +104,8 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
     }
 
     protected OnItemClickListener<ITEM> getItemClickListener() {
-        return mItemClickListener;
+//        return mItemClickListener;
+        return mTwoPartOnClick;
     }
 
     protected OnItemLongClickListener<ITEM> getItemLongClickListener() {
@@ -115,6 +123,14 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
             ITEM item = getItem(position);
             if (item != null) {
                 holder.setItem(item);
+                if(item.equals(mSelectedItem)) {
+                    int color = Color.argb(255,220,220,220);
+                    holder.itemView.setBackgroundColor(color);
+                } else {
+                    int color = Color.argb(0,0,0,0);
+                    holder.itemView.setBackgroundColor(color);
+                }
+
                 holder.getBinding().executePendingBindings();
             }
         }
@@ -155,5 +171,14 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
 
     protected OnRebindCallback<BINDING> getOnRebindCallback() {
         return mOnRebindCallback;
+    }
+
+    public class TwoPartOnItemClickListener implements OnItemClickListener<ITEM> {
+
+        @Override
+        public void onItemClick(ITEM item) {
+            mSelectedItem = item;
+            mItemClickListener.onItemClick(item);
+        }
     }
 }

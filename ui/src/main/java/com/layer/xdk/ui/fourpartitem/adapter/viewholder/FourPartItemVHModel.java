@@ -1,5 +1,6 @@
 package com.layer.xdk.ui.fourpartitem.adapter.viewholder;
 
+import android.graphics.Color;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.Set;
 public abstract class FourPartItemVHModel<ITEM> extends BaseObservable {
 
     private ITEM mItem;
+    private View mSelectedView;
     private OnItemClickListener<ITEM> mItemClickListener;
     private OnItemLongClickListener<ITEM> mItemLongClickListener;
     private IdentityFormatter mIdentityFormatter;
@@ -31,6 +33,11 @@ public abstract class FourPartItemVHModel<ITEM> extends BaseObservable {
             @Override
             public void onClick(View view) {
                 if (mItemClickListener != null) {
+                    int transparent = Color.argb(0,0,0,0);
+                    mSelectedView.setBackgroundColor(transparent);
+                    mSelectedView = view;
+                    int color = Color.argb(255,220,220,220);
+                    view.setBackgroundColor(color);
                     mItemClickListener.onItemClick(mItem);
                 }
             }
