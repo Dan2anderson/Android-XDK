@@ -34,7 +34,7 @@ public abstract class FourPartItemVHModel<ITEM> extends BaseObservable {
             public void onClick(View view) {
                 if (mItemClickListener != null) {
                     int transparent = Color.argb(0,0,0,0);
-                    mSelectedView.setBackgroundColor(transparent);
+                    if(mSelectedView != null) mSelectedView.setBackgroundColor(transparent);
                     mSelectedView = view;
                     int color = Color.argb(255,220,220,220);
                     view.setBackgroundColor(color);
