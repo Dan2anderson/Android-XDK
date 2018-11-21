@@ -1,9 +1,6 @@
 package com.layer.xdk.ui.conversation.adapter.viewholder;
 
-import android.graphics.Color;
-import android.view.View;
 import androidx.databinding.Bindable;
-
 import com.layer.sdk.messaging.Identity;
 import com.layer.xdk.ui.conversation.ConversationItemFormatter;
 import com.layer.xdk.ui.conversation.adapter.ConversationItemModel;
@@ -27,7 +24,6 @@ public class ConversationItemVHModel extends FourPartItemVHModel<ConversationIte
     public ConversationItemVHModel(IdentityFormatter identityFormatter,
             ImageCacheWrapper imageCacheWrapper,
             ConversationItemFormatter conversationItemFormatter) {
-
         super(identityFormatter, imageCacheWrapper);
         mConversationItemFormatter = conversationItemFormatter;
         mParticipantsMinusAuthenticatedUser = new HashSet<>();
@@ -58,15 +54,4 @@ public class ConversationItemVHModel extends FourPartItemVHModel<ConversationIte
         return getItem().getParticipantsMinusAuthenticatedUser();
     }
 
-//    public class DeselecterOnClickListener implements View.OnClickListener {
-//        private View mCurrentSelectedView;
-//        @Override
-//        public void onClick(View view) {
-//            int transparent = Color.argb(0,0,0,0);
-//            if(mCurrentSelectedView != null) mCurrentSelectedView.setBackgroundColor(transparent);
-//            mCurrentSelectedView = view;
-//            int color = Color.argb(255,220,220,220);
-//            view.setBackgroundColor(color);
-//        }
-//    }
 }

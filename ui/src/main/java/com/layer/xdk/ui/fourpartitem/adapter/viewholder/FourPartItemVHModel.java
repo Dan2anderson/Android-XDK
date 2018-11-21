@@ -18,7 +18,6 @@ import java.util.Set;
 public abstract class FourPartItemVHModel<ITEM> extends BaseObservable {
 
     private ITEM mItem;
-    private View mSelectedView;
     private OnItemClickListener<ITEM> mItemClickListener;
     private OnItemLongClickListener<ITEM> mItemLongClickListener;
     private IdentityFormatter mIdentityFormatter;
