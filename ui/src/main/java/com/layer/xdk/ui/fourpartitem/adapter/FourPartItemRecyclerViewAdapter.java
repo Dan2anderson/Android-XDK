@@ -43,7 +43,7 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
 
     private TwoPartOnItemClickListener mTwoPartOnClick;
     private ITEM mSelectedItem;
-    private View mSelectedView;
+//    private View mSelectedView;
 
     protected FourPartItemRecyclerViewAdapter(LayerClient layerClient,
             @NonNull DiffUtil.ItemCallback<ITEM> diffCallback) {

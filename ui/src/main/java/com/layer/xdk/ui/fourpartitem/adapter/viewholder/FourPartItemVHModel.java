@@ -6,6 +6,8 @@ import androidx.databinding.Bindable;
 import android.view.View;
 
 import com.layer.sdk.messaging.Identity;
+import com.layer.xdk.ui.conversation.adapter.viewholder.ConversationItemVHModel;
+import com.layer.xdk.ui.conversation.adapter.viewholder.SelectorOnClickListener;
 import com.layer.xdk.ui.identity.IdentityFormatter;
 import com.layer.xdk.ui.recyclerview.OnItemClickListener;
 import com.layer.xdk.ui.recyclerview.OnItemLongClickListener;
@@ -25,6 +27,8 @@ public abstract class FourPartItemVHModel<ITEM> extends BaseObservable {
     private View.OnClickListener mOnClickListener;
     private View.OnLongClickListener mOnLongClickListener;
 
+    protected SelectorOnClickListener mSelectorOnClickListener =  SelectorOnClickListener.getInstance();
+
     public FourPartItemVHModel(IdentityFormatter identityFormatter, ImageCacheWrapper imageCacheWrapper) {
         mIdentityFormatter = identityFormatter;
         mImageCacheWrapper = imageCacheWrapper;
@@ -33,11 +37,7 @@ public abstract class FourPartItemVHModel<ITEM> extends BaseObservable {
             @Override
             public void onClick(View view) {
                 if (mItemClickListener != null) {
-                    int transparent = Color.argb(0,0,0,0);
-                    if(mSelectedView != null) mSelectedView.setBackgroundColor(transparent);
-                    mSelectedView = view;
-                    int color = Color.argb(255,220,220,220);
-                    view.setBackgroundColor(color);
+                    mSelectorOnClickListener.onClick(view);
                     mItemClickListener.onItemClick(mItem);
                 }
             }
