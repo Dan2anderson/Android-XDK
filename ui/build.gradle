@@ -103,11 +103,11 @@ dependencies {
     // Include only for debug builds (namely for tests)
     debugImplementation 'androidx.multidex:multidex:' + rootProject.ext.xMultidex
     // Testing
-    testImplementation project(':xdk-test-common')
+//    testImplementation project(':xdk-test-common')
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
     testImplementation 'org.robolectric:robolectric:4.0'
-    androidTestImplementation project(':xdk-test-common')
+//    androidTestImplementation project(':xdk-test-common')
     androidTestImplementation 'org.mockito:mockito-core:' + rootProject.ext.mockitoVersion
     androidTestImplementation 'androidx.test:runner:' + rootProject.ext.runnerVersion
     androidTestImplementation 'androidx.test:rules:' + rootProject.ext.rulesVersion
