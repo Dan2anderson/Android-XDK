@@ -130,7 +130,6 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
                     int color = Color.argb(0,0,0,0);
                     holder.itemView.setBackgroundColor(color);
                 }
-
                 holder.getBinding().executePendingBindings();
             }
         }
