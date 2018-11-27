@@ -1,7 +1,5 @@
 package com.layer.xdk.ui.fourpartitem.adapter;
 
-import android.graphics.Color;
-import android.view.View;
 import androidx.paging.PagedListAdapter;
 import android.content.Context;
 import androidx.databinding.OnRebindCallback;
@@ -28,7 +26,7 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
         VIEW_HOLDER extends FourPartItemVH<ITEM, VIEW_HOLDER_MODEL>>
         extends PagedListAdapter<ITEM, VIEW_HOLDER> {
 
-    private final String TAG;
+    protected final String TAG;
 
     private LayoutInflater mLayoutInflater;
     private RecyclerView mRecyclerView;
@@ -36,14 +34,10 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
     private LayerClient mLayerClient;
 
     private STYLE mStyle;
-    private OnItemClickListener<ITEM> mItemClickListener;
+    protected OnItemClickListener<ITEM> mItemClickListener;
     private OnItemLongClickListener<ITEM> mItemLongClickListener;
 
     private OnRebindCallback<BINDING> mOnRebindCallback;
-
-    private TwoPartOnItemClickListener mTwoPartOnClick;
-    private ITEM mSelectedItem;
-//    private View mSelectedView;
 
     protected FourPartItemRecyclerViewAdapter(LayerClient layerClient,
             @NonNull DiffUtil.ItemCallback<ITEM> diffCallback) {
@@ -64,7 +58,6 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
                 }
             }
         };
-        mTwoPartOnClick = new TwoPartOnItemClickListener();
     }
 
     @SuppressWarnings("WeakerAccess")
@@ -104,8 +97,7 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
     }
 
     protected OnItemClickListener<ITEM> getItemClickListener() {
-//        return mItemClickListener;
-        return mTwoPartOnClick;
+        return mItemClickListener;
     }
 
     protected OnItemLongClickListener<ITEM> getItemLongClickListener() {
@@ -123,13 +115,6 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
             ITEM item = getItem(position);
             if (item != null) {
                 holder.setItem(item);
-                if(item.equals(mSelectedItem)) {
-                    int color = Color.argb(255,220,220,220);
-                    holder.itemView.setBackgroundColor(color);
-                } else {
-                    int color = Color.argb(0,0,0,0);
-                    holder.itemView.setBackgroundColor(color);
-                }
                 holder.getBinding().executePendingBindings();
             }
         }
@@ -170,14 +155,5 @@ public abstract class FourPartItemRecyclerViewAdapter<ITEM,
 
     protected OnRebindCallback<BINDING> getOnRebindCallback() {
         return mOnRebindCallback;
-    }
-
-    public class TwoPartOnItemClickListener implements OnItemClickListener<ITEM> {
-
-        @Override
-        public void onItemClick(ITEM item) {
-            mSelectedItem = item;
-            mItemClickListener.onItemClick(item);
-        }
     }
 }
