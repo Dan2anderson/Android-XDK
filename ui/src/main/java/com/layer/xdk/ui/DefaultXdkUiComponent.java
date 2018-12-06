@@ -14,7 +14,7 @@ import com.layer.xdk.ui.message.image.cache.ImageCacheWrapper;
 
 import javax.inject.Singleton;
 
-import dagger.Component;
+
 
 /**
  * Default Dagger component that uses the default XDK Dagger module. This allows access to
