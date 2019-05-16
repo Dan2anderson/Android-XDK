@@ -1,7 +1,7 @@
 package com.layer.xdk.ui.fourpartitem.adapter.viewholder;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 import android.view.View;
 
 import com.layer.sdk.messaging.Identity;
@@ -14,13 +14,13 @@ import java.util.Set;
 
 public abstract class FourPartItemVHModel<ITEM> extends BaseObservable {
 
-    private ITEM mItem;
-    private OnItemClickListener<ITEM> mItemClickListener;
+    protected ITEM mItem;
+    protected OnItemClickListener<ITEM> mItemClickListener;
     private OnItemLongClickListener<ITEM> mItemLongClickListener;
     private IdentityFormatter mIdentityFormatter;
     private ImageCacheWrapper mImageCacheWrapper;
 
-    private View.OnClickListener mOnClickListener;
+    protected View.OnClickListener mOnClickListener;
     private View.OnLongClickListener mOnLongClickListener;
 
     public FourPartItemVHModel(IdentityFormatter identityFormatter, ImageCacheWrapper imageCacheWrapper) {

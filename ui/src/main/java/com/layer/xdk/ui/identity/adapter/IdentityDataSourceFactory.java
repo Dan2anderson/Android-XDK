@@ -1,9 +1,9 @@
 package com.layer.xdk.ui.identity.adapter;
 
 
-import android.arch.paging.DataSource;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.paging.DataSource;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.layer.sdk.LayerClient;
 import com.layer.sdk.messaging.Identity;
@@ -23,7 +23,7 @@ import javax.inject.Inject;
  * {@link IdentityDataSourceFactory#useQuery(Predicate, SortDescriptor)} or
  * {@link IdentityDataSourceFactory#useIdentities(List)} to initialize.
  */
-public class IdentityDataSourceFactory implements DataSource.Factory<Integer, IdentityItemModel> {
+public class IdentityDataSourceFactory extends DataSource.Factory<Integer, IdentityItemModel> {
 
     private LayerClient mLayerClient;
     private Predicate mPredicate;

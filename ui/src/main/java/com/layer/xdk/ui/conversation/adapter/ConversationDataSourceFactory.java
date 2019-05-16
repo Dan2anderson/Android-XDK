@@ -1,8 +1,8 @@
 package com.layer.xdk.ui.conversation.adapter;
 
 
-import android.arch.paging.DataSource;
-import android.support.annotation.Nullable;
+import androidx.paging.DataSource;
+import androidx.annotation.Nullable;
 
 import com.layer.sdk.LayerClient;
 import com.layer.sdk.query.Predicate;
@@ -15,7 +15,7 @@ import javax.inject.Inject;
  * Factory that handles creations of {@link ConversationDataSource}. This contains the variables
  * used to create new instances of the DataSource when old ones become invalid.
  */
-public class ConversationDataSourceFactory implements DataSource.Factory<Integer, ConversationItemModel> {
+public class ConversationDataSourceFactory extends DataSource.Factory<Integer, ConversationItemModel> {
 
     private LayerClient mLayerClient;
     private MessageModelManager mMessageModelManager;

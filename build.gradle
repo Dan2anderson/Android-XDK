@@ -6,7 +6,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:3.2.1'
         classpath group: 'com.layer', name: 'gradle-git-repo-plugin', version: '2.0.2'
     }
 }
@@ -27,16 +27,22 @@ allprojects {
 
 ext {
     minSdkVersion = 14
-    targetSdkVersion = 27
-    compileSdkVersion = 27
+    targetSdkVersion = 28
+    compileSdkVersion = 28
 
-    supportLibVersion = "27.1.0"
-    espressoVersion = "3.0.1"
-    runnerVersion = "1.0.2-alpha1"
-    rulesVersion = "1.0.2-alpha1"
+    xlegacySupportCoreUtils = "1.0.0"
+    xRecyclerview = "1.0.0"
+    xAppcompat = "1.0.2"
+    xMaterial = "1.0.0"
+    xExifinterface = "1.0.0"
+
+    espressoVersion = "3.1.0"
+    runnerVersion = "1.1.0"
+    rulesVersion = "1.1.0"
+
     truthVersion = "0.39"
-    multidexVersion = "1.0.3"
-    daggerVersion = "2.15"
+    xMultidex = "2.0.0"
+    daggerVersion = "2.18"
     layerSdkVersion = "4.0.9"
-    mockitoVersion = "2.8.47"
+    mockitoVersion = "2.23.0"
 }
